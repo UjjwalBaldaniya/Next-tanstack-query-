@@ -16,11 +16,10 @@ module.exports = {
   extends: [
     'next',
     'eslint:recommended',
-    'prettier',
-    'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
-    'plugin:prettier/recommended',
+    'plugin:prettier/recommended', // Make sure this is last to disable conflicting rules
+    'next/core-web-vitals',
     'plugin:react-hooks/recommended',
   ],
   plugins: ['prettier', '@typescript-eslint', 'react', 'react-hooks'],
@@ -45,19 +44,22 @@ module.exports = {
         objectLiteralTypeAssertions: 'never',
       },
     ],
+    '@typescript-eslint/no-unused-vars': 'warn', // Ensure TypeScript no-unused-vars rule is used
+    '@typescript-eslint/no-explicit-any': 'warn', // Warn on usage of 'any' type
     // React rules
     'react/jsx-fragments': ['warn', 'syntax'], // Shorthand syntax for React fragments
     'react/jsx-filename-extension': [
       'warn',
       {
-        extensions: ['ts', 'tsx'],
+        extensions: ['.tsx'],
       },
     ],
     'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
     'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
-    'prettier/prettier': 'warn',
+    // Prettier integration
+    'prettier/prettier': 'warn', // Use Prettier's rule set
   },
   settings: {
     react: {
