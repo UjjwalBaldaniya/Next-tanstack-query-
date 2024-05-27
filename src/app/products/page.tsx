@@ -1,4 +1,4 @@
-import { ProductsServer } from '../features/Products';
+import { ProductsServer } from '@/features/Products';
 import ProductsClient from './page.client';
 
 const Products = () => {

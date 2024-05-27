@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 import { API_URL } from '../constants/appConfig.constant';
 
 const BASE_OPTIONS = {
@@ -8,13 +8,16 @@ const BASE_OPTIONS = {
   },
 };
 
-export const publicApi = axios.create(BASE_OPTIONS);
+const publicApi: AxiosInstance = axios.create(BASE_OPTIONS);
 
 publicApi.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    return Promise.reject(error.response.data.code);
-  },
+  (response: AxiosResponse) => response,
+  (error: AxiosError) => Promise.reject(handleError(error)),
 );
+
+function handleError(error: AxiosError): Error {
+  const errorCode = error.response?.data || 'UNKNOWN_ERROR';
+  return new Error(`API Error: ${errorCode}`);
+}
+
+export default publicApi;

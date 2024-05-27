@@ -1,11 +1,12 @@
-import { publicApi } from '@/shared/configs/api.configs';
+import { Product } from '@/features/Products/types/product.type';
+import publicApi from '@/shared/configs/api.configs';
 
-export async function getProducts() {
+export async function getProducts(): Promise<Product[]> {
   try {
-    const response = await publicApi.get(`/products`);
-    return response.data;
+    const response = await publicApi.get<Product[]>(`/products`);
+    return response.data || [];
   } catch (error) {
-    console.error('Failed to fetch categories:', error);
+    console.error('Failed to fetch products:', error);
     throw error;
   }
 }

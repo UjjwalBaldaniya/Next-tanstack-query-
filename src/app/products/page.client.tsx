@@ -1,7 +1,29 @@
-import React from 'react';
+'use client';
+
+import { ProductCard } from '@/features/Products';
+import { useGetProductQuery } from '@/features/Products/api/products.api';
 
 const ProductsClient = () => {
-  return <div>page.client</div>;
+  const { data, error, isLoading } = useGetProductQuery();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error fetching products: {error.message}</div>;
+  }
+
+  return (
+    <>
+      <div className="container mx-auto">
+        <div className="mx-auto flex flex-wrap gap-4">
+          {data &&
+            data?.map((item, index) => <ProductCard {...item} key={index} />)}
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default ProductsClient;
