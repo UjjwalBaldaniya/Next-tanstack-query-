@@ -16,7 +16,7 @@ const ProductsClient = () => {
 
   return (
     <>
-      <div className="container mx-auto">
+      <div className="container mx-auto my-8">
         <div className="mx-auto flex flex-wrap gap-4">
           {data &&
             data?.map((item, index) => <ProductCard {...item} key={index} />)}
