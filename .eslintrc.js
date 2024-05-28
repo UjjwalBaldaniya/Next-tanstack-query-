@@ -22,8 +22,15 @@ module.exports = {
     'next/core-web-vitals',
     'plugin:react-hooks/recommended',
   ],
-  plugins: ['prettier', '@typescript-eslint', 'react', 'react-hooks'],
+  plugins: [
+    'prettier',
+    '@typescript-eslint',
+    'react',
+    'react-hooks',
+    'simple-import-sort',
+  ],
   rules: {
+    'simple-import-sort/imports': 'error',
     // JavaScript rules
     'prefer-const': 'warn',
     'no-var': 'warn',
@@ -59,7 +66,12 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     // Prettier integration
-    'prettier/prettier': 'warn', // Use Prettier's rule set
+    'prettier/prettier': [
+      'warn',
+      {
+        endOfLine: 'auto', // Enforce consistent line endings
+      },
+    ],
   },
   settings: {
     react: {

@@ -1,9 +1,10 @@
 'use client';
 import { Button, Card } from 'flowbite-react';
-import React from 'react';
-import { Product } from '../../types/product.type';
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
+
+import { Product } from '../../types/product.type';
 
 interface ExtendedProduct extends Product {
   key: number;

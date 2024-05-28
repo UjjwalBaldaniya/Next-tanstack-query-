@@ -1,11 +1,12 @@
-import { getSingleProduct } from '@/shared/api/products-api';
-import { QueryKey } from '@/shared/constants/queryKey.constant';
 import {
+  dehydrate,
   HydrationBoundary,
   QueryClient,
-  dehydrate,
 } from '@tanstack/react-query';
 import { ReactNode } from 'react';
+
+import { getSingleProduct } from '@/shared/api/products-api';
+import { QueryKey } from '@/shared/constants/queryKey.constant';
 
 interface SingleProductsServerProps {
   params: string;
@@ -24,7 +25,6 @@ const SingleProductServer = async ({
   });
 
   const categories = queryClient.getQueryData([QueryKey.SINGLEPRODUCT]);
-  console.log('🚀 ~ categories:', categories);
 
   if (!categories) {
     console.error('No categories available in the cache.');

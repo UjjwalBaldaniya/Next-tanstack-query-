@@ -1,8 +1,9 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
+import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
+
 import { API_URL } from '../constants/appConfig.constant';
 
 const BASE_OPTIONS = {
-  baseURL: API_URL,
+  baseURL: 'https://fakestoreapi.com',
   headers: {
     'Content-Type': 'application/json',
   },

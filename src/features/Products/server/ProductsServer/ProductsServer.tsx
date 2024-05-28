@@ -1,11 +1,12 @@
-import { ReactNode } from 'react';
-import { getProducts } from '@/shared/api/products-api';
-import { QueryKey } from '@/shared/constants/queryKey.constant';
 import {
+  dehydrate,
   HydrationBoundary,
   QueryClient,
-  dehydrate,
 } from '@tanstack/react-query';
+import { ReactNode } from 'react';
+
+import { getProducts } from '@/shared/api/products-api';
+import { QueryKey } from '@/shared/constants/queryKey.constant';
 
 interface ProductsServerProps {
   children: ReactNode;

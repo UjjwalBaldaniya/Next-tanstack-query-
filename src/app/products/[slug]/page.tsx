@@ -1,4 +1,5 @@
 import { SingleProductServer } from '@/features/Products';
+
 import SingleProductClient from './page.client';
 
 interface SingleProductProps {
